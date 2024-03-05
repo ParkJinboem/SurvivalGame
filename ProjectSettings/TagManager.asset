@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Rock
+  - Twig
+  - Grass
+  - Tree
+  - Item
+  - WeakAnimal
+  - StrongAnimal
   layers:
   - Default
   - TransparentFX
@@ -14,9 +21,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Weapon
+  - Item
+  - Player
   - 
   - 
   - 
