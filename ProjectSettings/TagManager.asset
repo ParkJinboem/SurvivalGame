@@ -11,6 +11,9 @@ TagManager:
   - Item
   - WeakAnimal
   - StrongAnimal
+  - Fire
+  - Structure
+  - Computer
   layers:
   - Default
   - TransparentFX
@@ -24,11 +27,11 @@ TagManager:
   - Weapon
   - Item
   - Player
-  - 
-  - 
-  - 
-  - 
-  - 
+  - NPC
+  - Fire
+  - Terrain
+  - Buliding
+  - Computer
   - 
   - 
   - 

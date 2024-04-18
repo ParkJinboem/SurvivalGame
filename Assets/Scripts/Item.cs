@@ -16,6 +16,10 @@ public class Item : ScriptableObject
     public Sprite itemImage;
     //아이템 프리팹
     public GameObject itemPrefab;
+    //키트 프리팹
+    public GameObject kitPrefab;
+    //키트 프리뷰프리팹
+    public GameObject kitPreviewPrefab;
     // 무기 유형
     public string weaponType;
 
@@ -24,6 +28,7 @@ public class Item : ScriptableObject
         Equipment,
         Used,
         Ingredient,
+        Kit,
         ETC,
     }
 }

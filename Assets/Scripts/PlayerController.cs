@@ -6,6 +6,8 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class PlayerController : MonoBehaviour
 {
+    static public bool isActivated = true;
+
     //스피드 조정 변수
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
@@ -63,16 +65,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IsGround();
-        TryJump();
-        TryRun();
-        TryCrouch();
-        Move();
-        MoveCheck();
-        if(!Inventory.inventoryActivated)
+        if(isActivated)
         {
-            cameraRotation();
-            CharacterRotation();
+            IsGround();
+            TryJump();
+            TryRun();
+            TryCrouch();
+            Move();
+            MoveCheck();
+            if (!Inventory.inventoryActivated)
+            {
+                cameraRotation();
+                CharacterRotation();
+            }
         }
     }
 
@@ -192,6 +197,7 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity;
     private void Move()
     {
+        Debug.Log("무브");
         float moveDirX = Input.GetAxisRaw("Horizontal");
         float moveDirZ = Input.GetAxisRaw("Vertical");
 
@@ -264,5 +270,10 @@ public class PlayerController : MonoBehaviour
         }
 
         pauseCameraRotation = false;
+    }
+
+    public bool GetRun()
+    {
+        return isRun;
     }
 }

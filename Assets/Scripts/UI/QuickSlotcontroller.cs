@@ -42,7 +42,6 @@ public class QuickSlotcontroller : MonoBehaviour
         selectedSlot = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         TryInputNumber();
@@ -178,7 +177,7 @@ public class QuickSlotcontroller : MonoBehaviour
             {
                 StartCoroutine(weaponManager.ChangeWeaponCoroutine(quickSlots[selectedSlot].item.weaponType, quickSlots[selectedSlot].item.itemName));
             }
-            else if (quickSlots[selectedSlot].item.itemType == Item.ItemType.Used)
+            else if (quickSlots[selectedSlot].item.itemType == Item.ItemType.Used || quickSlots[selectedSlot].item.itemType == Item.ItemType.Kit)
             {
                 ChangeHand(quickSlots[selectedSlot].item);
             }
@@ -199,14 +198,18 @@ public class QuickSlotcontroller : MonoBehaviour
 
         if(item != null)
         {
-            StartCoroutine(HandItemCoroutine());
+            StartCoroutine(HandItemCoroutine(item));
         }
     }
-    IEnumerator HandItemCoroutine()
+    IEnumerator HandItemCoroutine(Item item)
     {
         HandController.isActiviate = false;
         //무기교체의 마지막 함수가 실행될때까지 대기
         yield return new WaitUntil(() => HandController.isActiviate);
+        if(item.itemType == Item.ItemType.Kit)
+        {
+            HandController.currentKit = item;
+        }
         handItem = Instantiate(quickSlots[selectedSlot].item.itemPrefab, itemPos.position, itemPos.rotation);
         handItem.GetComponent<Rigidbody>().isKinematic = true;
         handItem.GetComponent<BoxCollider>().enabled = false;
@@ -215,7 +218,7 @@ public class QuickSlotcontroller : MonoBehaviour
         handItem.transform.SetParent(itemPos);
     }
 
-    public void EatItme()
+    public void DecreaseSelectedItem()
     {
         CoolTimeReset();
         AppearReset();
@@ -229,5 +232,10 @@ public class QuickSlotcontroller : MonoBehaviour
     public bool GetIsCoolTime()
     {
         return isCooltime;
+    }
+
+    public Slot GetSelectedSlot()
+    {
+        return quickSlots[selectedSlot];
     }
 }

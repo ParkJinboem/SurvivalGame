@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3516ea624dd7dd641befbba697fa3a4d, type: 3}
   m_Name: Twig
   m_EditorClassIdentifier: 
-  itemName: twig
+  itemName: Twig
+  itemDesc: 
   itemType: 2
   itemImage: {fileID: 21300000, guid: 10d15bc5e7d0e1b47b50da588bfbee56, type: 3}
   itemPrefab: {fileID: 1837881364201009420, guid: 12d0c36bdb712bd4db0633a94dba9356, type: 3}

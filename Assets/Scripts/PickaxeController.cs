@@ -40,12 +40,11 @@ public class PickaxeController : CloseWeaponController
                     SoundManager.instance.PlaySE("AnimalHit");
                     hitInfo.transform.GetComponent<WeakAnimal>().Damage(1, transform.position);
                 }
-                //다른 동물 애니메이션 태그를 사용할경우 추가할 예정
-                //else if (hitInfo.transform.tag == "StrongAnimal")
-                //{
-                //    SoundManager.instance.PlaySE("AnimalHit");
-                //    hitInfo.transform.GetComponent<WeakAnimal>().Damage(1, transform.position);
-                //}
+                else if (hitInfo.transform.tag == "StrongAnimal")
+                {
+                    SoundManager.instance.PlaySE("AnimalHit");
+                    hitInfo.transform.GetComponent<StrongAnimal>().Damage(1, transform.position);
+                }
                 isSwing = false;
                 Debug.Log(hitInfo.transform.name);
             }

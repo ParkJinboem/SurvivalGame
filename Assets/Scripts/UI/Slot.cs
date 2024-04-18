@@ -107,8 +107,6 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         }
     }
 
-
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (item != null)
@@ -137,15 +135,24 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnEndDrag(PointerEventData eventData)
     {
         //ÀÎº¥Åä¸® ¿µ¿ª || Äü½½·Ô ¿µ¿ª
-        if(!((DragSlot.instance.transform.localPosition.x > baseRect.rect.xMin
+        if (!((DragSlot.instance.transform.localPosition.x > baseRect.rect.xMin
             && DragSlot.instance.transform.localPosition.x < baseRect.rect.xMax
             && DragSlot.instance.transform.localPosition.y > baseRect.rect.yMin
             && DragSlot.instance.transform.localPosition.y < baseRect.rect.yMax)
         ||
-        (DragSlot.instance.transform.localPosition.x > quickSlotBaseRect.rect.xMin 
+        (DragSlot.instance.transform.localPosition.x > quickSlotBaseRect.rect.xMin
         && DragSlot.instance.transform.localPosition.x < quickSlotBaseRect.rect.xMax
         && DragSlot.instance.transform.localPosition.y + baseRect.localPosition.y > quickSlotBaseRect.rect.yMin + quickSlotBaseRect.transform.localPosition.y
-        && DragSlot.instance.transform.localPosition.y + baseRect.localPosition.y < quickSlotBaseRect.rect.yMax + quickSlotBaseRect.transform.localPosition.y )))
+        && DragSlot.instance.transform.localPosition.y + baseRect.localPosition.y < quickSlotBaseRect.rect.yMax + quickSlotBaseRect.transform.localPosition.y)))
+        //if(!((DragSlot.instance.transform.localPosition.x > baseRect.rect.xMin 
+        //    && DragSlot.instance.transform.localPosition.x < baseRect.rect.xMax
+        //    && DragSlot.instance.transform.localPosition.y > baseRect.rect.yMin
+        //    && DragSlot.instance.transform.localPosition.y < baseRect.rect.yMax)
+        //    ||
+        //    (DragSlot.instance.transform.localPosition.x > quickSlotBaseRect.rect.xMin
+        //    && DragSlot.instance.transform.localPosition.x < quickSlotBaseRect.rect.xMax
+        //    && DragSlot.instance.transform.localPosition.y > quickSlotBaseRect.transform.localPosition.y - quickSlotBaseRect.rect.yMax //Äü½½·Ô ÃÖ´ë°ª
+        //    && DragSlot.instance.transform.localPosition.y < quickSlotBaseRect.transform.localPosition.y - quickSlotBaseRect.rect.yMin))) //Äü½½·Ô ÃÖ¼Ò°ª
         {
             if (DragSlot.instance.transform != null)
             {
@@ -176,7 +183,7 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 if(DragSlot.instance.dragSlot.isQuickSlot)
                 {
                     itemEffectDatabase.IsActivatedQuickSlot(DragSlot.instance.dragSlot.quickSlotNumber);
-                }
+                } 
             }
         }
     }
